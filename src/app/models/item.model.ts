@@ -6,4 +6,5 @@ export interface Item {
 	description: string;
 	foto: string;
 	status: Statuses;
+	isVisible?: boolean;
 }

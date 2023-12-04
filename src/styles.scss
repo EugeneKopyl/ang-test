@@ -1,4 +1,41 @@
+@import "./assets/styles/variables";
 /* You can add global styles to this file, and also import other style files */
+:root {
+	--background-color: #f0f2f5;
+	--text-color: #1a1a1a;
+	--text-inactive-color: #6b7c93;
+	--table-row-even-background-color: #dedede;
+	--table-row-hover-text-color: var(--background-color);
+	--table-row-hover-background-color: var(--text-color);
+	--button-background-color: #79c07f;
+	--button-color: var(--background-color);
+	--button-box-shadow: rgba(0, 0, 0, 0.2);
+	--button-hover-box-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Темная тема */
+.dark-theme {
+	--background-color: #181a1b;
+	--text-color: #e3e4e6;
+	--text-inactive-color: #5a5c5e;
+	--table-row-even-background-color: #2a2c2e;
+	--table-row-hover-text-color: var(--background-color);
+	--table-row-hover-background-color: var(--text-color);
+	--button-background-color: #4b6f58;
+	--button-color: var(--background-color);
+	--button-box-shadow: rgba(255, 255, 255, 0.1);
+	--button-hover-box-shadow: rgba(255, 255, 255, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #181a1b;
+		--text-color: #e3e4e6;
+		--text-inactive-color: #5a5c5e;
+		--table-row-even-background-color: #2a2c2e;
+		--table-row-hover-background-color: #3e4042;
+	}
+}
 
 html {
 	font-size: 16px;
@@ -6,4 +43,24 @@ html {
 
 body {
 	font-family: sans-serif;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.container {
+	width: 100%;
+	max-width: 1320px;
+	margin: 0 auto;
+}
+
+@media print {
+	@page {
+		size: letter;
+		margin: auto;
+	}
+	button,
+	.table-actions,
+	.print-remove {
+		display: none !important;
+	}
 }

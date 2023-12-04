@@ -1,8 +1,80 @@
-<div><input type="checkbox" [formControl]="checkbox" /></div>
-<div><img [src]="item.foto" /></div>
-<div>{{ item.label }}</div>
-<div>{{ item.status }}</div>
-<div>{{ item.description }}</div>
-<div>
-	<app-icon (click)="killMe.emit()" [icon]="Icons.trash"></app-icon>
+<div
+	*ngIf="item.isVisible"
+	[@itemState]
+	[class.even-background]="isEven"
+	[class.inactive]="!isActive"
+	class="cell print-remove checkbox"
+>
+	<input type="checkbox" [formControl]="checkbox" />
+</div>
+<div class="foto-label-block">
+	<div
+		*ngIf="item.isVisible"
+		[@itemState]
+		[class.even-background]="isEven"
+		[class.inactive]="!isActive"
+		class="cell cell-foto"
+	>
+		<img [src]="item.foto" />
+	</div>
+	<div
+		*ngIf="item.isVisible"
+		[@itemState]
+		[class.even-background]="isEven"
+		[class.inactive]="!isActive"
+		class="cell only-print"
+	>
+		{{ item.label }}
+	</div>
+</div>
+<div class="item-info-block">
+	<div
+		*ngIf="item.isVisible"
+		[@itemState]
+		[class.even-background]="isEven"
+		[class.inactive]="!isActive"
+		class="cell print-remove"
+	>
+		{{ item.label }}
+	</div>
+	<div
+		*ngIf="item.isVisible"
+		[@itemState]
+		[class.even-background]="isEven"
+		[class.inactive]="!isActive"
+		class="cell print-remove"
+	>
+		{{ item.status }}
+	</div>
+	<div
+		*ngIf="item.isVisible"
+		[@itemState]
+		(@itemState.done)="onAnimationDone($event)"
+		[class.even-background]="isEven"
+		[class.inactive]="!isActive"
+		class="description-container cell"
+	>
+		<div #description class="description" [class.expanded]="isExpanded">
+			{{ item.description }}
+		</div>
+		<span
+			*ngIf="isOverflowing"
+			class="expand-icon print-remove"
+			[class.rotated]="isExpanded"
+			(click)="toggleExpand()"
+		></span>
+	</div>
+</div>
+<div
+	*ngIf="item.isVisible"
+	[@itemState]
+	[class.even-background]="isEven"
+	[class.inactive]="!isActive"
+	class="cell print-remove action-cell"
+>
+	<app-icon
+		(click)="deleteItem()"
+		[icon]="Icons.trash"
+		class="delete-icon"
+	></app-icon>
 </div>

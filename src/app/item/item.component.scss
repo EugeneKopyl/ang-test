@@ -1,8 +1,135 @@
 :host {
 	display: contents;
+
+	& .cell {
+		padding: 1rem;
+		transition: background-color 0.3s, color 0.3s;
+	}
+
+	&:hover .cell {
+		background-color: var(--table-row-hover-background-color);
+		color: var(--table-row-hover-text-color);
+	}
+
+	&:hover .expand-icon {
+		border-color: var(--table-row-hover-text-color) transparent transparent transparent;
+	}
 }
 
 img {
 	max-width: 5rem;
 	max-height: 5rem;
+}
+
+.description-container {
+	position: relative;
+}
+
+.description {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 10;
+	line-height: 1.2;
+
+	&.expanded {
+		height: auto;
+		-webkit-line-clamp: unset;
+	}
+}
+
+.expand-icon {
+	position: absolute;
+	right: 0;
+	bottom: 1.325rem;
+	cursor: pointer;
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 5px;
+	border-style: solid;
+	border-width: 0.375rem 0.375rem 0 0.375rem;
+	border-color: var(--text-color) transparent transparent transparent;
+
+	&.rotated {
+		transform: rotate(180deg);
+	}
+}
+
+.delete-icon {
+	fill: #d9534f;
+}
+
+.even-background {
+	background-color: var(--table-row-even-background-color);
+}
+
+.inactive {
+	color: var(--text-inactive-color);
+
+	img {
+		filter: grayscale(100%);
+	}
+}
+
+.only-print {
+	display: none;
+}
+
+.cell-foto {
+	flex: auto;
+}
+
+.foto-label-block {
+	display: flex;
+	flex-direction: column;
+}
+
+.item-info-block {
+	display: contents;
+}
+
+@media screen and (max-width: 991px) {
+	.item-info-block {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.description {
+		-webkit-line-clamp: 1;
+	}
+
+	.even-background {
+		background-color: transparent;
+	}
+
+	.checkbox,
+	.foto-label-block,
+	.item-info-block,
+	.action-cell {
+		border-bottom: 1px solid var(--table-row-even-background-color);
+	}
+}
+
+@media print {
+	.only-print {
+		display: flex;
+		flex: auto;
+	}
+
+	.cell-foto {
+		flex: none;
+	}
+
+	.item-info-block {
+		display: contents;
+	}
+
+	.description {
+		height: auto;
+		-webkit-line-clamp: unset;
+		page-break-inside: avoid;
+	}
 }
