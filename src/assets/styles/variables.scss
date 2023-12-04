@@ -1,5 +1,18 @@
-$background-color: #ffffff; // белый фон страницы
-$button-color: #38c172; // зеленый для кнопок
-$button-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // тень для кнопок
-$row-hover-color: #f5f5f5; // цвет фона для строки при наведении
-$alternate-row-color: #eeeeee; // цвет фона для каждого второго ряда
+//$background-color: #ffffff; // белый фон страницы
+//$button-color: #38c172; // зеленый для кнопок
+//$button-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // тень для кнопок
+//$row-hover-color: #f5f5f5; // цвет фона для строки при наведении
+//$alternate-row-color: #eeeeee; // цвет фона для каждого второго ряда
+
+
+$background-color: #f0f2f5;
+$text-color: #1a1a1a;
+$text-inactive-color: #6b7c93;
+$table-row-even-background-color: #e8f1fd;
+$table-row-hover-background-color: #d6dae2;
+
+$dark-background-color: #181a1b;
+$dark-text-color: #e3e4e6;
+$dark-text-inactive-color: #5a5c5e;
+$dark-table-row-even-background-color: #2a2c2e;
+$dark-table-row-hover-background-color: #3e4042;
